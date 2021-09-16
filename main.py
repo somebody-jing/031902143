@@ -196,7 +196,13 @@ def Creatdictionary(sensitive_words, text):
 if __name__ == '__main__':
     #读取文件
     txt_word = open(args.words, 'r', encoding='utf-8')
-    txt_org = open(args.org, 'r', encoding='utf-8')
+    txt_org = open(args.org, 'r', encoding='utf-8')  #进行IO检验
+    try:
+        org_file = open('org.txt', encoding='utf-8')
+    except IOError:
+        print("Not Found")
+    else:
+        print("Successfully Load")
     txt_ans = open(args.ans, 'w', encoding='utf-8')
     read_ans = txt_word.read()
     sensitive_words = read_ans.split('\n')  #通过换行符进行切块
